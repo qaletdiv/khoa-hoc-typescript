@@ -1,18 +1,8 @@
-function calculateSum(numbers: number[]): number {
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        sum += numbers[i];
-    }
-    return sum;
-}
+let studentNames: string[] = ["Linh", "Hà", "Nam", "Trang"];
 
-// Hoặc sử dụng reduce:
-/*
-function calculateSum(numbers: number[]): number {
-    return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-}
-*/
+let studentScores: number[] = [8.5, 9.0, 7.5, 8.0];
 
-const myNumbers = [10, 20, 30, 40];
-const totalSum = calculateSum(myNumbers);
-console.log(`Tổng của mảng là: ${totalSum}`); // Output: Tổng của mảng là: 100
+studentNames.map((name, index) => {
+  const score = studentScores[index];
+  console.log(`${name} có số điểm là: ${score}`);
+});

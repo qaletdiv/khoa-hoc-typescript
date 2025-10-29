@@ -1,37 +1,21 @@
-interface Product {
+let employee: {
+    id: number;
     name: string;
-    price: number;
-    category?: {
-        id: number;
-        name: string;
+    department: string;
+    phone?: string; // Thuộc tính tùy chọn
+    address: {
+        street: string;
+        city: string;
     };
-}
-
-function printProductInfo(product: Product): void {
-    console.log(`Tên sản phẩm: ${product.name}`);
-    console.log(`Giá: ${product.price} VNĐ`);
-    if (product.category) {
-        console.log(`Danh mục: ${product.category.name} (ID: ${product.category.id})`);
-    } else {
-        console.log("Không có thông tin danh mục.");
+} = {
+    id: 101,
+    name: "Trần Văn B",
+    department: "Marketing",
+    address: {
+        street: "123 Đường ABC",
+        city: "Hà Nội"
     }
-    console.log("---");
-}
-
-// Gọi hàm với sản phẩm có danh mục
-let productWithCategory: Product = {
-    name: "Smartphone X",
-    price: 15000000,
-    category: {
-        id: 1,
-        name: "Điện thoại"
-    }
+    // Thuộc tính 'phone' được bỏ qua vì nó là tùy chọn
 };
-printProductInfo(productWithCategory);
 
-// Gọi hàm với sản phẩm không có danh mục
-let productWithoutCategory: Product = {
-    name: "Sạc dự phòng",
-    price: 500000
-};
-printProductInfo(productWithoutCategory);
+console.log(employee);
