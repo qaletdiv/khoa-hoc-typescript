@@ -1,8 +1,15 @@
-// Khai báo mảng tọa độ gồm 2 phần tử số
-let point: [number, number] = [10, 20];
+// Khai báo đối tượng book
+let book = {
+    title: "The Great Adventure",
+    author: "Jane Doe",
+    pages: 350 // Thêm một thuộc tính không cần dùng để minh họa việc chỉ trích xuất
+};
 
-// Dùng destructuring để lấy ra x và y, có khai báo kiểu cho cặp [x, y]
-let [x, y]: [number, number] = point;
+// Viết hàm printBookDetails sử dụng Destructuring trong tham số
+function printBookDetails({ title, author }: { title: string; author: string }) {
+    console.log(`Book Title: ${title}, Author: ${author}`);
+}
 
-// In ra kết quả
-console.log(`Tọa độ: (${x}, ${y})`);
+// Gọi hàm
+printBookDetails(book);
+// Expected Output: Book Title: The Great Adventure, Author: Jane Doe
