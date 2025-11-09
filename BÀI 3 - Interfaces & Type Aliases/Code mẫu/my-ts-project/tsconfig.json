@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    // === Cấu trúc File ===
+    "rootDir": "./src",   /* Thư mục gốc chứa các file TypeScript (mã nguồn). */
+    "outDir": "./dist",   /* Thư mục chứa các file JavaScript đã biên dịch. */
+
+    // === Cài đặt Môi trường ===
+    "module": "nodenext", /* Hệ thống module: "nodenext" tối ưu cho Node.js ES Modules. */
+    "target": "esnext",   /* Phiên bản ECMAScript mục tiêu: "esnext" cho các tính năng JS mới nhất. */
+    "lib": ["esnext"],    /* Các thư viện JS có sẵn để hỗ trợ kiểm tra kiểu. */
+    "types": ["node"],    /* Bao gồm các khai báo kiểu cho môi trường Node.js. */
+
+    // === Kiểm tra Kiểu Nghiêm ngặt ===
+    "strict": true,       /* Bật tất cả các tùy chọn kiểm tra kiểu nghiêm ngặt (KHUYẾN NGHỊ). */
+    // "noUncheckedIndexedAccess": true,    /* (Tùy chọn) Báo lỗi khi truy cập chỉ mục mảng/đối tượng có thể trả về undefined. */
+    // "exactOptionalPropertyTypes": true,  /* (Tùy chọn) Phân biệt rõ thuộc tính tùy chọn với undefined. */
+
+    // === Tối ưu hóa cho Compiler/Build Tools ===
+    "verbatimModuleSyntax": true,    /* Giữ nguyên cú pháp import/export trong đầu ra. */
+    "isolatedModules": true,         /* Cho phép mỗi file được biên dịch độc lập. */
+    "moduleDetection": "force",      /* Buộc TypeScript coi mọi file là một module. */
+    "skipLibCheck": true             /* Bỏ qua kiểm tra kiểu các file trong node_modules. */
+
+    // === Các tùy chọn khác có thể bật sau khi nắm vững kiến thức cơ bản ===
+    // "sourceMap": true,       /* Sinh file .map để debug dễ dàng hơn. */
+    // "declaration": true,     /* Sinh file .d.ts nếu bạn muốn tạo thư viện TypeScript. */
+  },
+  "include": [
+    "src/**/*.ts" // Bao gồm tất cả các file .ts trong thư mục src và các thư mục con
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts" // Loại trừ các file test hoặc các file không cần biên dịch
+  ]
+}
