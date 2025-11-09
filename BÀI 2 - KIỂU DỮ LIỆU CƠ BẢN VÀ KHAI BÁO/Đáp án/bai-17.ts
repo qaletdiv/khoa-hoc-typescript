@@ -1,16 +1,15 @@
-let student = {
-    id: "ST001",
-    name: "Lê Văn A",
-    grade: "A",
-    major: "IT"
+// Khai báo đối tượng book
+let book = {
+    title: "The Great Adventure",
+    author: "Jane Doe",
+    pages: 350 // Thêm một thuộc tính không cần dùng để minh họa việc chỉ trích xuất
 };
 
-// Trích xuất id và name với Type Annotation
-let { id, name }: { id: string; name: string } = student;
+// Viết hàm printBookDetails sử dụng Destructuring trong tham số
+function printBookDetails({ title, author }: { title: string; author: string }) {
+    console.log(`Book Title: ${title}, Author: ${author}`);
+}
 
-// Trích xuất grade vào biến studentGrade với Type Annotation
-let { grade: studentGrade }: { grade: string } = student;
-
-console.log(`Mã sinh viên: ${id}`);           // Output: Mã sinh viên: ST001
-console.log(`Tên sinh viên: ${name}`);         // Output: Tên sinh viên: Lê Văn A
-console.log(`Điểm: ${studentGrade}`);         // Output: Điểm: A
+// Gọi hàm
+printBookDetails(book);
+// Expected Output: Book Title: The Great Adventure, Author: Jane Doe

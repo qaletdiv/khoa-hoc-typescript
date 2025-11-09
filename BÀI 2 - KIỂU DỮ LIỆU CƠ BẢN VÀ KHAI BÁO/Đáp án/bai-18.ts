@@ -1,13 +1,7 @@
-function displayUserDetails({ firstName, lastName, email }: { firstName: string; lastName: string; email: string }): void {
-    console.log(`Full Name: ${firstName} ${lastName}, Email: ${email}`);
-}
+let fruits: [string, string, string] = ["apple", "banana", "cherry"];
 
-// Gọi hàm với một đối tượng người dùng mẫu
-const user = {
-    firstName: "Nguyễn",
-    lastName: "Thị B",
-    email: "nguyenthib@example.com"
-};
+// Phân rã mảng, bỏ qua phần tử giữa
+let [firstFruit, , lastFruit]: [string, string, string] = fruits;
 
-displayUserDetails(user);
-// Output: Full Name: Nguyễn Thị B, Email: nguyenthib@example.com
+console.log(firstFruit, lastFruit);
+// Kết quả: apple cherry

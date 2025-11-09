@@ -14,9 +14,11 @@ let { firstName, age }: { firstName: string; age: number } = person;
 console.log(firstName, age); // Output: Alice 30
 
 // Phân rã với thuộc tính được đổi tên
-let { firstName: fName, lastName: lName } = person;
-// fName và lName sẽ tự động suy luận kiểu là string
-console.log(fName, lName); // Output: Alice Smith
+let { firstName: fName, lastName: lName }: {firstName: string, lastName: string} = person;
+console.log(fName, lName);
+
+// TypeScript tự suy luận: age là number
+// let { age } = person;
 
 // Phân rã trong tham số hàm
 function printUser({ name, email }: { name: string; email: string }) {

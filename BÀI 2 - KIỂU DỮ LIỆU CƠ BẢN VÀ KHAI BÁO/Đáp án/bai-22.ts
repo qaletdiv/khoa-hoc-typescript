@@ -1,19 +1,31 @@
-// Giả định tsconfig.json có "strict": true
-let data: string | null = "Hello";
-data = undefined; // Lỗi: Type 'undefined' is not assignable to type 'string | null'.
-                  // Giải thích: Với strict: true, 'undefined' không thể gán cho kiểu 'string | null' trừ khi nó được khai báo rõ ràng trong kiểu kết hợp.
+let data: unknown;
 
-function fetchData(): void {
-    // Hàm này không trả về giá trị gì.
+// Trường hợp 1: số
+data = 50;
+if (typeof data === "number") {
+  console.log("Kết quả nhân đôi:", data * 2);
+} else if (typeof data === "string") {
+  console.log("Chuỗi in hoa:", data.toUpperCase());
+} else {
+  console.log("Không thể xử lý kiểu dữ liệu này");
 }
 
-let result: void = fetchData(); // OK, kiểu trả về của fetchData là void.
-let something: void = null;     // Lỗi: Type 'null' is not assignable to type 'void'.
-                                // Giải thích: Với strict: true, biến kiểu 'void' chỉ có thể gán 'undefined', không phải 'null'.
+// Trường hợp 2: chuỗi
+data = "TypeScript";
+if (typeof data === "number") {
+  console.log("Kết quả nhân đôi:", data * 2);
+} else if (typeof data === "string") {
+  console.log("Chuỗi in hoa:", data.toUpperCase());
+} else {
+  console.log("Không thể xử lý kiểu dữ liệu này");
+}
 
-// Để dòng data = undefined; không báo lỗi:
-// Bạn cần thay đổi kiểu của data để bao gồm undefined trong kiểu kết hợp:
-
-// let data: string | null | undefined = "Hello";
-// data = undefined; // OK
-// console.log(data);
+// Trường hợp 3: boolean
+data = false;
+if (typeof data === "number") {
+  console.log("Kết quả nhân đôi:", data * 2);
+} else if (typeof data === "string") {
+  console.log("Chuỗi in hoa:", data.toUpperCase());
+} else {
+  console.log("Không thể xử lý kiểu dữ liệu này");
+}

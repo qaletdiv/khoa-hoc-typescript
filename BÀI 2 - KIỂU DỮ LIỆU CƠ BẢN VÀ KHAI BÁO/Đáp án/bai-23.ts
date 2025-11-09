@@ -1,42 +1,19 @@
-function handleApiResponse(response: unknown): void {
-    if (typeof response === "string") {
-        // Nếu là chuỗi, coi là thông báo lỗi
-        console.log(`API Error: ${response}`);
-    } else if (response === null || typeof response === "undefined") {
-        // Nếu là null hoặc undefined
-        console.log("No API response received.");
-    } else if (
-        typeof response === "object" &&
-        response !== null && // Đảm bảo không phải null khi typeof là "object"
-        "status" in response &&
-        typeof (response as { status: unknown }).status === "number" &&
-        "data" in response &&
-        typeof (response as { data: unknown }).data === "string"
-    ) {
-        // Nếu là đối tượng có thuộc tính status là number và data là string
-        const apiResponse = response as { status: number; data: string };
-        console.log(`API Data (Status: ${apiResponse.status}): ${apiResponse.data}`);
-    } else {
-        // Các trường hợp còn lại
-        console.log("Unexpected API response format.");
-    }
+// Giả định tsconfig.json có "strict": true
+let data: string | null = "Hello";
+data = undefined; // Lỗi: Type 'undefined' is not assignable to type 'string | null'.
+                  // Giải thích: Với strict: true, 'undefined' không thể gán cho kiểu 'string | null' trừ khi nó được khai báo rõ ràng trong kiểu kết hợp.
+
+function fetchData(): void {
+    // Hàm này không trả về giá trị gì.
 }
 
-// Ví dụ gọi hàm:
-handleApiResponse("Server timed out.");
-// Output: API Error: Server timed out.
+let result: void = fetchData(); // OK, kiểu trả về của fetchData là void.
+let something: void = null;     // Lỗi: Type 'null' is not assignable to type 'void'.
+                                // Giải thích: Với strict: true, biến kiểu 'void' chỉ có thể gán 'undefined', không phải 'null'.
 
-handleApiResponse({ status: 200, data: "User list loaded." });
-// Output: API Data (Status: 200): User list loaded.
+// Để dòng data = undefined; không báo lỗi:
+// Bạn cần thay đổi kiểu của data để bao gồm undefined trong kiểu kết hợp:
 
-handleApiResponse(null);
-// Output: No API response received.
-
-handleApiResponse(undefined);
-// Output: No API response received.
-
-handleApiResponse(123);
-// Output: Unexpected API response format.
-
-handleApiResponse({ error: "Something went wrong" }); // Đối tượng không khớp cấu trúc
-// Output: Unexpected API response format.
+// let data: string | null | undefined = "Hello";
+// data = undefined; // OK
+// console.log(data);
