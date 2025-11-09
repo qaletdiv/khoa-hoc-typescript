@@ -1,26 +1,23 @@
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <title>Type Assertion Example</title>
-// </head>
-// <body>
-//     <input type="text" id="my-input" value="Giá trị của input">
-//     <script src="your-typescript-output.js"></script> <!-- Thay bằng file JS được compile từ TS -->
-// </body>
-// </html>
+let apiResult: unknown = '{"success": true, "token": "abc123"}';
 
-let element: unknown = document.getElementById("my-input");
+if (typeof apiResult === "string") {
+  try {
+    const parsed = JSON.parse(apiResult);
 
-// Kiểm tra trước khi ép kiểu (tốt nhất)
-if (element instanceof HTMLInputElement) {
-    const inputElement = element as HTMLInputElement;
-    console.log(`Giá trị của input: ${inputElement.value}`);
+    // Kiểm tra xem parsed có phải là object và có thuộc tính token không
+    if (
+      typeof parsed === "object" &&
+      parsed !== null &&
+      "token" in parsed &&
+      typeof (parsed as any).token === "string"
+    ) {
+      console.log(`Token hợp lệ: ${(parsed as any).token}`);
+    } else {
+      console.log("Không tìm thấy token trong dữ liệu JSON.");
+    }
+  } catch {
+    console.log("Dữ liệu JSON không hợp lệ.");
+  }
 } else {
-    console.log("Element không phải là HTMLInputElement.");
+  console.log("Dữ liệu không phải là chuỗi JSON.");
 }
-
-// Hoặc ép kiểu trực tiếp nếu bạn chắc chắn
-const inputElementDirect = element as HTMLInputElement;
-console.log(`Giá trị của input (ép kiểu trực tiếp): ${inputElementDirect.value}`);
