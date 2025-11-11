@@ -1,7 +1,15 @@
-let fruits: [string, string, string] = ["apple", "banana", "cherry"];
+// Khai báo đối tượng book
+let book = {
+    title: "The Great Adventure",
+    author: "Jane Doe",
+    pages: 350 // Thêm một thuộc tính không cần dùng để minh họa việc chỉ trích xuất
+};
 
-// Phân rã mảng, bỏ qua phần tử giữa
-let [firstFruit, , lastFruit]: [string, string, string] = fruits;
+// Viết hàm printBookDetails sử dụng Destructuring trong tham số
+function printBookDetails({ title, author }: { title: string; author: string }) {
+    console.log(`Book Title: ${title}, Author: ${author}`);
+}
 
-console.log(firstFruit, lastFruit);
-// Kết quả: apple cherry
+// Gọi hàm
+printBookDetails(book);
+// Expected Output: Book Title: The Great Adventure, Author: Jane Doe
